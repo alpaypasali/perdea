@@ -1,0 +1,18 @@
+PERDEA SEO NOTLARI
+
+Oluşturulan ürün URL'leri:
+- /stor-perde/
+- /ahsap-jaluzi-perde/
+- /aluminyum-jaluzi-perde/
+- /zebra-perde/
+- /plise-perde/
+- /dikey-perde/
+
+Her sayfada özgün title, meta description, H1, breadcrumb, Product + FAQPage + BreadcrumbList JSON-LD, iç linkleme ve WhatsApp teklif formu bulunur.
+
+CANLIYA ALMADAN ÖNCE:
+1) Kesin alan adı belli olduğunda her ürün sayfasına mutlak canonical URL ekleyin.
+2) og:image değerlerini canlı alan adındaki mutlak görsel URL'leriyle ekleyin.
+3) Alan adı belli olduktan sonra sitemap.xml üretip robots.txt içine Sitemap: satırını ekleyin.
+4) Search Console'a siteyi ve sitemap'i gönderin.
+5) Gerçek hizmet verilen şehir/ilçe varsa sadece gerçekten hizmet verilen bölgeler için yerel içerik ekleyin; spam amaçlı kopya şehir sayfaları oluşturmayın.
