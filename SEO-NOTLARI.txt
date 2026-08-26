@@ -3,7 +3,7 @@ PERDEA SEO NOTLARI
 Oluşturulan ürün URL'leri:
 - /stor-perde/
 - /ahsap-jaluzi-perde/
-- /aluminyum-jaluzi-perde/
+- /zip-perde/
 - /zebra-perde/
 - /plise-perde/
 - /dikey-perde/
