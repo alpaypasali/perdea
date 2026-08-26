@@ -28,6 +28,7 @@
     .hero {
       position:relative;
       width:100vw;
+      height:100vh;
       height:100svh;
       min-height:640px;
       overflow:hidden;
@@ -104,6 +105,7 @@
     }
     .nav-links a { opacity:.96; }
     .nav-links a:hover { opacity:.64; }
+    .nav-links .mobile-nav-cta { display:none; }
     .nav-actions {
       justify-self:end;
       display:flex;
@@ -289,7 +291,7 @@
       .advisor { right:3vw; width:520px; }
     }
 
-    @media (max-width:860px) {
+    @media (max-width:1050px) {
       .hero { min-height:760px; }
       .hero-bg { object-position:center center; }
       .split-line { display:none; }
@@ -304,7 +306,35 @@
       }
       .logo-link { width:145px; height:48px; }
       .logo-link img { width:132px; }
-      .nav-links,.nav-actions .bayi { display:none; }
+      .nav-links {
+        position:absolute;
+        top:calc(100% + 8px);
+        left:0;
+        right:0;
+        transform:none;
+        justify-self:stretch;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:4px;
+        padding:10px;
+        border:1px solid rgba(255,255,255,.84);
+        border-radius:14px;
+        background:rgba(250,250,249,.97);
+        box-shadow:0 18px 42px rgba(15,27,34,.18);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+      }
+      .nav-links.open { display:flex; }
+      .nav-links a {
+        min-height:44px;
+        padding:0 12px;
+        display:flex;
+        align-items:center;
+        border-radius:9px;
+      }
+      .nav-links a:hover { background:rgba(33,20,95,.07); opacity:1; }
+      .nav-actions .bayi { display:none; }
       .nav-actions { justify-self:end; gap:8px; }
       .quote-btn { height:42px; min-width:105px; font-size:13px; border-radius:10px; }
       .mobile-toggle {
@@ -316,6 +346,7 @@
         border-radius:10px;
         background:rgba(33,20,95,.08);
         color:#21145f;
+        cursor:pointer;
       }
       .hero-title.left {
         left:22px;
@@ -346,6 +377,37 @@
         width:auto;
       }
       .advisor-form input { font-size:15px; }
+    }
+
+    @media (max-width:480px) {
+      .hero { min-height:720px; }
+      .navbar { left:12px; right:12px; top:12px; padding-left:14px; }
+      .logo-link { width:132px; }
+      .logo-link img { width:124px; }
+      .quote-btn { display:none; }
+      .nav-links .mobile-nav-cta {
+        display:flex;
+        justify-content:center;
+        margin-top:4px;
+        color:#fff;
+        background:linear-gradient(135deg,#21145f 0%,#2f94c3 100%);
+        font-weight:700;
+      }
+      .nav-links .mobile-nav-cta:hover { color:#fff; background:linear-gradient(135deg,#21145f 0%,#2f94c3 100%); }
+      .hero-title.left {
+        left:18px;
+        right:18px;
+        top:29%;
+        font-size:clamp(38px,11.5vw,50px);
+      }
+      .right-copy {
+        left:14px;
+        right:14px;
+        top:44%;
+        padding:18px;
+      }
+      .right-copy h1 { font-size:clamp(34px,10.5vw,46px); }
+      .right-copy p { font-size:15px; line-height:1.45; }
     }
 
 
@@ -418,6 +480,7 @@
     }
     .product-card {
       position:relative;
+      display:block;
       min-height:460px;
       overflow:hidden;
       border-radius:24px;
@@ -676,6 +739,11 @@
       background:#fff;
       box-shadow:0 26px 80px rgba(33,20,95,.08);
     }
+    .products-head > *,
+    .about-layout > *,
+    .catalogue-layout > *,
+    .contact-panel > *,
+    .quote-form > * { min-width:0; }
     .contact-panel::after {
       content:"";
       position:absolute;
@@ -727,7 +795,7 @@
       background:#fbfcff;
       color:#21145f;
       font:inherit;
-      font-size:14px;
+      font-size:16px;
     }
     .form-field input,.form-field select { height:52px; padding:0 15px; }
     .form-field textarea { min-height:120px; padding:14px 15px; resize:vertical; }
@@ -791,7 +859,10 @@
       position:fixed;
       z-index:999;
       left:50%;
-      bottom:24px;
+      bottom:calc(24px + env(safe-area-inset-bottom));
+      width:max-content;
+      max-width:calc(100vw - 32px);
+      text-align:center;
       transform:translate(-50%,20px);
       padding:13px 17px;
       border-radius:999px;
@@ -818,7 +889,7 @@
     @media (max-width:680px) {
       .section-shell { width:calc(100% - 36px); }
       .products-section,.about-section,.catalogue-section,.use-section,.contact-section { padding-top:72px; padding-bottom:72px; }
-      .section-title { font-size:clamp(38px,12vw,54px); }
+      .section-title { font-size:clamp(34px,10.8vw,50px); }
       .section-intro { font-size:16px; }
       .product-grid { display:block; }
       .product-card.large,.product-card.small,.product-card.third { min-height:410px; margin-bottom:14px; }
@@ -837,13 +908,25 @@
       .footer-top { grid-template-columns:1fr; gap:36px; }
       .footer-bottom { flex-direction:column; align-items:flex-start; }
     }
+    @media (max-width:420px) {
+      .section-shell { width:calc(100% - 28px); }
+      .product-card.large,.product-card.small,.product-card.third { min-height:360px; }
+      .product-card-copy { padding:20px; gap:14px; }
+      .product-card h3 { font-size:25px; }
+      .card-arrow { width:44px; height:44px; flex-basis:44px; }
+      .catalogue-collage { height:370px; }
+      .use-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+      .use-card { min-height:130px; padding:18px 16px; }
+      .use-card h3 { font-size:15px; }
+      .solid-button,.outline-button { width:100%; padding-left:18px; padding-right:18px; text-align:center; }
+    }
 
 
     /* FLOATING WHATSAPP */
     .whatsapp-float {
       position: fixed;
       right: 24px;
-      bottom: 24px;
+      bottom: calc(24px + env(safe-area-inset-bottom));
       z-index: 1000;
       display: inline-flex;
       align-items: center;
@@ -857,7 +940,7 @@
       font-size: 14px;
       box-shadow: 0 14px 34px rgba(18, 39, 52, .22);
       border: 1px solid rgba(255,255,255,.45);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
     }
     .whatsapp-float:hover {
       transform: translateY(-2px);
@@ -865,11 +948,13 @@
       box-shadow: 0 18px 38px rgba(18, 39, 52, .28);
     }
     .whatsapp-float svg { width: 26px; height: 26px; flex: 0 0 26px; }
+    .whatsapp-float.is-hidden { opacity:0; transform:translateY(12px); pointer-events:none; }
     @media (max-width: 640px) {
       .whatsapp-float {
         right: 16px;
-        bottom: 16px;
-        width: 54px;
+        bottom: calc(16px + env(safe-area-inset-bottom));
+        width: 50px;
+        min-height: 50px;
         padding: 0;
         justify-content: center;
       }
@@ -888,17 +973,18 @@
         <img src="assets/perdea-logo.png" alt="Perdea" />
       </a>
 
-      <div class="nav-links">
+      <div class="nav-links" id="main-navigation">
         <a href="#ana-sayfa">Ana Sayfa</a>
         <a href="#urunler">Ürünler</a>
         <a href="#hakkimizda">Hakkımızda</a>
         <a href="#katalog">Katalog</a>
         <a href="iletisim/">İletişim</a>
+        <a class="mobile-nav-cta" href="#iletisim">Teklif Al <span>↗</span></a>
       </div>
 
       <div class="nav-actions">
         <a class="quote-btn" href="#iletisim">Teklif Al <span>↗</span></a>
-        <button class="mobile-toggle" type="button" aria-label="Menüyü aç">☰</button>
+        <button class="mobile-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="main-navigation">☰</button>
       </div>
     </nav>
 
@@ -1063,6 +1149,50 @@
   <div class="content-toast" id="contentToast" role="status">Talebiniz alındı. Teşekkürler.</div>
 
   <script>
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mainNavigation = document.getElementById('main-navigation');
+
+    const closeMobileMenu = () => {
+      mainNavigation?.classList.remove('open');
+      mobileToggle?.setAttribute('aria-expanded', 'false');
+      mobileToggle?.setAttribute('aria-label', 'Menüyü aç');
+      if (mobileToggle) mobileToggle.textContent = '☰';
+    };
+
+    mobileToggle?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = mainNavigation?.classList.toggle('open') ?? false;
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      mobileToggle.setAttribute('aria-label', isOpen ? 'Menüyü kapat' : 'Menüyü aç');
+      mobileToggle.textContent = isOpen ? '×' : '☰';
+    });
+
+    mainNavigation?.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeMobileMenu();
+    });
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.navbar')) closeMobileMenu();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMobileMenu();
+    });
+
+    const floatingWhatsapp = document.querySelector('.whatsapp-float');
+    const floatingCollisionMedia = window.matchMedia('(max-width:640px)');
+    const floatingCollisionZones = document.querySelectorAll('.product-grid, .feature-grid, .catalogue-layout, .use-grid, #iletisim, footer');
+    const visibleCollisionZones = new Set();
+    const updateFloatingWhatsapp = () => {
+      floatingWhatsapp?.classList.toggle('is-hidden', floatingCollisionMedia.matches && visibleCollisionZones.size > 0);
+    };
+    const floatingObserver = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries) => {
+          entries.forEach((entry) => entry.isIntersecting ? visibleCollisionZones.add(entry.target) : visibleCollisionZones.delete(entry.target));
+          updateFloatingWhatsapp();
+        })
+      : null;
+    floatingCollisionZones.forEach((zone) => floatingObserver?.observe(zone));
+    floatingCollisionMedia.addEventListener?.('change', updateFloatingWhatsapp);
+
     const quoteForm = document.getElementById('quoteForm');
     const contentToast = document.getElementById('contentToast');
     const whatsappNumber = '905314308565';
